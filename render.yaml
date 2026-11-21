@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: aviator-crash-backend
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run server
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_DB
+        value: aviator_crash
+      - key: MONGODB_URI
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
